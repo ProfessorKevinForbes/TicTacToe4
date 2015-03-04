@@ -1,0 +1,53 @@
+var turn = 0;
+var imageName="";
+
+function endsWith(str, suffix) {
+    return str.indexOf(suffix, str.length - suffix.length) !== -1;
+}
+
+function toggleBox(name) {
+	var box = document.getElementById(name);
+	if(endsWith(box.src, "blank.png")) {
+		if(turn == 0) {
+			box.src = "x.png";
+			turn = 1;
+		} else { 
+			box.src = "o.png";
+			turn = 0;
+		}
+	}
+	
+}
+
+function clearGame() {
+	turn = 0;
+	for(var i=1; i < 10; i++) {
+		var box = document.getElementById("box" + i);
+		box.src = "blank.png";
+	}	
+
+}
+
+function changePhoto(name) {
+	imageName = name;
+	// Take picture using device camera and retrieve image as base64-encoded string
+    navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50, destinationType: Camera.DestinationType.DATA_URL });
+}
+
+function onFail(message) {
+    alert('Failed because: ' + message);
+}
+
+function onPhotoDataSuccess(imageData) {
+      // Get image handle
+      //
+      var smallImage = document.getElementById(imageName);
+
+      // Unhide image elements
+      //
+      smallImage.style.display = 'block';
+
+      // Show the captured photo
+      // The inline CSS rules are used to resize the image
+      //
+      smallImage.src = "data:image/jpeg;base64," + imageData;}
