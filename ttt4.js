@@ -1,6 +1,16 @@
 var turn = 0;
 var imageName="";
 
+var pictureSource;   // picture source
+var destinationType; // sets the format of returned value 
+
+document.addEventListener("deviceready",onDeviceReady,false);
+
+function onDeviceReady() {
+    pictureSource=navigator.camera.PictureSourceType;
+    destinationType=navigator.camera.DestinationType;
+}
+
 function endsWith(str, suffix) {
     return str.indexOf(suffix, str.length - suffix.length) !== -1;
 }
@@ -30,6 +40,7 @@ function clearGame() {
 
 function changePhoto(name) {
 	imageName = name;
+	alert('Changing Photo');
 	// Take picture using device camera and retrieve image as base64-encoded string
     navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50, destinationType: Camera.DestinationType.DATA_URL });
 }
