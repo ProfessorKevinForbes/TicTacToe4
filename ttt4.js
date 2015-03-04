@@ -28,13 +28,13 @@ function toggleBox(name) {
 			counter++;
 		}
 		box.reload();
+		if(counter == 9) {
+			navigator.vibrate(3000);
+			alert('Game Over!');
+			counter++;
+		}
 	}
 	
-	if(counter == 9) {
-		navigator.vibrate(3000);
-		alert('Game Over!');
-		counter++;
-	}
 	
 }
 
