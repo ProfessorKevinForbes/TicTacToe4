@@ -31,6 +31,7 @@ function toggleBox(name) {
 	
 	if(counter == 9) {
 		navigator.vibrate(3000);
+		alert('Game Over!');
 		counter++;
 	}
 	
